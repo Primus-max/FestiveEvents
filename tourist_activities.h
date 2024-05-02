@@ -14,3 +14,5 @@ struct  TouristActivities
 
 TouristActivities* getEvents(char filePath[]);
 time_t dateToTimeT(const char* dateStr);
+void printEvent(TouristActivities& event);
+void printEvents(TouristActivities* events, int size);
