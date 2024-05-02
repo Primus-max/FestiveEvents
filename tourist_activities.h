@@ -15,4 +15,7 @@ struct  TouristActivities
 TouristActivities* getEvents(char filePath[]);
 time_t dateToTimeT(const char* dateStr);
 void printEvent(TouristActivities& event);
-void printEvents(TouristActivities* events, int size);
+void printEvents(TouristActivities* events, rsize_t size);
+void sortEventsByName(TouristActivities* activities, size_t count);
+int compare(const void* a, const void* b);
+void searchEventsByDate(TouristActivities* activities, size_t count, const char* date);

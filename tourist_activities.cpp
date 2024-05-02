@@ -82,7 +82,25 @@ void printEvent(TouristActivities& event)
 	cout << "----------------------------------------" << endl;
 }
 
-void printEvents(TouristActivities* events, int size){
+void printEvents(TouristActivities* events, rsize_t size){
 	for (size_t i = 0; i < size; i++)
 		printEvent(events[i]);	
+}
+
+int compare(const void* a, const void* b) {
+	return strcmp(((TouristActivities*)a)->name, ((TouristActivities*)b)->name);
+}
+
+void sortEventsByName(TouristActivities* activities, size_t count) {
+	qsort(activities, count, sizeof(TouristActivities), compare);
+}
+
+void searchEventsByDate(TouristActivities* activities, size_t count, const char* date) {
+	time_t targetDate = dateToTimeT(date);
+	for (size_t i = 0; i < count; ++i) {
+		if (activities[i].start <= targetDate && targetDate <= activities[i].finish) {
+			cout << "Searched event by date" << "**************" << endl;
+			printEvent(activities[i]);
+		}
+	}
 }
