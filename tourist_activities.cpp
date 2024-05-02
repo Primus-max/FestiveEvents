@@ -50,10 +50,22 @@ TouristActivities* getEvents(char filePath[]) {
                 }
             }
         }
-        activities.finish = 345345;
-        cout << finish << endl;
-        cout << start << endl;
+        activities.start = dateToTimeT(start);
+        activities.finish = dateToTimeT(finish);
+
+        cout << activities.start;
     }
 
     return nullptr;
+}
+
+time_t dateToTimeT(const char* dateStr){
+    struct tm timeStruct = {};
+    sscanf_s(dateStr, "%d-%d-%d", &timeStruct.tm_year, &timeStruct.tm_mon, &timeStruct.tm_mday);
+
+    timeStruct.tm_year -= 1900;
+    timeStruct.tm_mon -= 1;
+    time_t time = mktime(&timeStruct);
+
+    return time;
 }

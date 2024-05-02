@@ -2,6 +2,7 @@
 
 #include <time.h>
 
+
 struct  TouristActivities
 {
 	char name[255]{};
@@ -12,3 +13,4 @@ struct  TouristActivities
 };
 
 TouristActivities* getEvents(char filePath[]);
+time_t dateToTimeT(const char* dateStr);
